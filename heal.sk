@@ -1,0 +1,32 @@
+# /heal <player> –> Heilt den angegebenen Spieler.
+
+command /heal <player>:
+    description: Heilt einen Spieler vollständig.
+    usage: &2&lServer &8> &7Nutze &e/heal <Spieler> &7um dich oder einen anderen Spieler zu &dheilen&7.
+    executable by: players
+    trigger:
+        if arg-1 is player:
+            if player has permission "volpe.skript.heal.self":
+                heal arg-1
+                send "&2&lServer &8> &7Du hast dich &ageheilt&7." to player
+            else:
+                send "&2&lServer &8> &7Dazu hast du &ckeine &7Berechtigung (&cvolpe.skript.heal.self&7)." to player
+        else:
+            if player has permission "volpe.skript.heal.others":
+                heal arg-1
+                send "&2&lServer &8> &7Du hast &e%arg-1% &ageheilt&7." to player
+                send "&2&lServer &8> &7Du wurdest von &e%player% &ageheilt&7." to arg-1
+            else:
+                send "&2&lServer &8> &7Dazu hast du &ckeine &7Berechtigung (&cvolpe.skript.heal.others&7)." to player
+
+
+# Dieses Skript wurde von La_Volpe_ entwickelt.
+# Dieses Skript (sowie die Skript-Sprache generell) ist für kleinere Netzwerke bis ~50 Spieler gedacht.
+# Auf größeren Servern kann Skript möglicherweise nicht mit größeren Plugin-Alternativen wie EssentialsX mithalten, was Geschwindigkeit betrifft.
+
+# Alle Nachrichten sind frei anpassbar.
+# Um die Nachrichten farblich zu ändern, werden Minecraft-Farbcodes benötigt. (siehe https://minecraft.fandom.com/de/wiki/Formatierungscodes)
+# Die Berechtigungen können geändert werden, allerdings können bei uninformierter Nutzung Fehler auftreten.
+# Um die Berechtigungen zu verwalten, wird ein Permission-Plugin wie LuckPerms benötigt. (siehe https://luckperms.net/)
+
+# Wenn dir dieses Skript gefällt, freue ich mich über positives Feedback.
